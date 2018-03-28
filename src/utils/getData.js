@@ -5,7 +5,8 @@ export const getParsedFilms = (event) => {
 
     reader.onload = function () {
       const text = reader.result;
-      const splitted = text.split("\n");
+      const data=text.trim();
+      const splitted = data.split("\n");
       let resultData = [];
       let start_index = 0;
       splitted.forEach((item, index) => {
