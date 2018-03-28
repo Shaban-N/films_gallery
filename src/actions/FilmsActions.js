@@ -1,4 +1,4 @@
-import { FETCH_FILMS, ADD_FILM , SHOW_FILM_INFO, DELETE_FILM,SEARCH_FILM,CHANGE_SORTING_ORDER} from '../constants/ActionTypes';
+import { FETCH_FILMS, ADD_FILM, ADD_FILMS, SHOW_FILM_INFO, DELETE_FILM,SEARCH_FILM,CHANGE_SORTING_ORDER} from '../constants/ActionTypes';
 
 export const fetchFilms = () => {
   return async (dispatch)=> {
@@ -23,9 +23,14 @@ export const showFilmInfo = (film_id) => ({
 })
 
 
-export const  addNewFilm = (newFilm) => ({
+export const  addFilm = film => ({
     type: ADD_FILM,
-    newFilm
+    film
+})
+
+export const addFilms = films => ({
+  type: ADD_FILMS,
+  films
 })
 
 export const  searchFilm = (stringToSearch) => ({

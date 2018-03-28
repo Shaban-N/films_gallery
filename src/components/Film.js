@@ -2,9 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { deleteFilm } from '../actions/FilmsActions'
 
-const  mapStateToProps = (state) => ({
-});
-
 const mapDispatchToProps = (dispatch) => ({
   fetchData: () => dispatch(fetchFilms()),
   deleteData: (id) => dispatch(deleteFilm(id))
@@ -12,56 +9,57 @@ const mapDispatchToProps = (dispatch) => ({
 
 class Film extends Component {
   state = {
-    isInfoShow:false,
-    info:{}
-  }
-
-  onDeleteFilm = (id) => {
-    fetch(`/api/films/${id}`, { method: 'delete' }).then(this.props.deleteData(id));
+    isInfoOpened:false,
   };
 
-  fetchFilmInfo = (id) => {
-    fetch(`/api/films/${id}`, { method: 'get' })
-      .then(result => result.text())
-      .then(data =>{
-      console.log(data)
-        this.setState({info: JSON.parse(data), isInfoShow: true})});
+  onDeleteFilm = id =>
+    fetch(`/api/films/${id}`, { method: 'delete' })
+      .then(this.props.deleteData(id));
+
+  toogleInfoOpened = () => {
+    this.setState({isInfoOpened: !this.state.isInfoOpened});
   };
 
-  onCloseInfo = (id) => {
-    this.setState({isInfoShow: false})
+  onCloseInfo = () => {
+    this.setState({isInfoOpened: false})
   };
-
 
 
   render() {
+  const {format, release, stars,title,id } = this.props;
     return (
-      <div className="">
-        <div className="inline_item">
-          <div>
-            {this.props.title}
+      <div className=''>
+        <div className='inline-item'>
+          <div className='film-title'>
+            {title}
           </div>
-          <button onClick={() => this.onDeleteFilm(this.props.id)}>Remove this film</button>
-          <button onClick={() => this.fetchFilmInfo(this.props.id)}>Info</button>
+          <button
+            className='button remove__button'
+            onClick={() => this.onDeleteFilm(id)}>
+              Remove this film
+          </button>
+          <button
+            className='button info__button'
+            onClick={this.toogleInfoOpened}>
+              Info
+          </button>
         </div>
-        {this.state.isInfoShow &&
-          <div>
-            <div className="">
-              <div className="inline_item">
-                <p>Release year: </p>
-                <p>{this.state.info.release} </p>
+        {this.state.isInfoOpened &&
+            <div className='info_wrapper'>
+              <div className='item_info'>
+                <p><span className="bold">Release year:</span> {release}</p>
               </div>
-              <div className="inline_item">
-                <p>Format: </p>
-                <p>{this.state.info.format} </p>
+              <div className='item_info'>
+                <p><span className="bold">Format:</span> {format} </p>
               </div>
-              <div className="inline_item">
-                <p>Stars: </p>
-                <p>{this.state.info.stars} </p>
+              <div className='item_info'>
+                <p><span className="bold">Actors:</span> {stars} </p>
               </div>
-
-            </div>
-            <button onClick={() => this.onCloseInfo(this.props.id)}> Close </button>
+            <button
+              className='button'
+              onClick={() => this.onCloseInfo(id)}>
+                Hide
+            </button>
           </div>
         }
       </div>
@@ -69,4 +67,4 @@ class Film extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Film);
+export default connect(null, mapDispatchToProps)(Film);

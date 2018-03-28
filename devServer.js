@@ -28,17 +28,16 @@ app.get('/', (req, res) => {
 
 
 app.listen(port, 'localhost', (err) => {
-  const url = 'mongodb://localhost:27017/films';
-
+  //const url = 'mongodb://localhost:27017/films';
+  const url ='mongodb://user:user@ds115579.mlab.com:15579/movies_db'
   mongoClient.connect(url, function (err, database) {
-    const db = database.db('films')
+    const db = database.db('movies_db')
     app.get('/api/films', (req, res) => {
       // make db call
       db.collection("movies").find({}).toArray(function (err, results) {
         if (err) {
           console.log(err)
         } else {
-          console.log(results)
           res.setHeader('Content-Type', 'application/json');
           res.send(JSON.stringify(results));
         }
@@ -46,7 +45,6 @@ app.listen(port, 'localhost', (err) => {
     });
 
     app.delete('/api/films/:id', (req, res) => {
-      console.log(req.params.id)
       const id = new objectId(req.params.id);
       db.collection("movies").findOneAndDelete({ _id: id }, function (err, result) {
         if (err) return console.log(err)
@@ -64,7 +62,6 @@ app.listen(port, 'localhost', (err) => {
             format: result.format,
             stars: result.stars
           };
-          console.log(info)
           res.setHeader('Content-Type', 'application/json');
           res.send(info)
         }
@@ -72,14 +69,10 @@ app.listen(port, 'localhost', (err) => {
     });
 
     app.post('/api/films', (req, res) => {
-      const movie = req.body;
-      db.collection("movies").insertOne(movie, function (err, result) {
-        if (err) return console.log(err)
-        else  res.send(movie)
-      })
-      console.log(req.body)
-    });
+      const films = req.body;
 
+      db.collection("movies").insertMany(films);
+    });
 
   });
 

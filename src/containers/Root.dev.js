@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import App from './App';
+import FilmsList from './FilmsList';
 import DevTools from './DevTools';
 
 /**
@@ -10,11 +10,9 @@ module.exports = class Root extends Component {
   render() {
     const { store } = this.props;
     return (
-
       <Provider store={store}>
         <div>
-          <App />
-          {/* Being the dev version of our Root component, we include DevTools below */}
+          <FilmsList />
           <DevTools />
         </div>
       </Provider>

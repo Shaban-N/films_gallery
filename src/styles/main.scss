@@ -1,48 +1,160 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:100,400);
 
 $main-bg-color: #f1f2f0;
-$accent-blue: #37bbe4;
-$accent-gray: #e1e0dd;
+$main-app-width: 1000px;
+$body-bg-color:#c4c5c6;
+$elements-color:#f27d7d;
 $accent-black: #35342f;
-$accent-orange: #ec6b2d;
-$accent-red: #dd6464;
+$item-padding:20px;
+
+
 
 body {
-  background-color: $main-bg-color;
+  background-color: $body-bg-color ;
   color: $accent-black;
   display: flex;
   justify-content: center;
-  font-family: 'Raleway', sans-serif;
+
 }
+body,input,button{
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+}
+//button{
+//  outline: none;
+//}
+header{
+  display: flex;
+  padding: 16px 0;
+}
+ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+li:nth-child(2n){
+  background-color: #f9f9f9;
+  border-radius: 10px;
+}
+
 
 .main-app-container {
-  padding-top: 2em;
+  width: $main-app-width;
+  margin: 30px auto 0;
+  padding: 30px;
+  background-color: $main-bg-color;
 }
 
-.main-app-nav {
-  font-size: 2em;
-  text-align: center;
-}
-
-.inline_item{
+.button {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-around;
+  margin: 10px 0;
+  align-items: center;
+  width: 100px;
+  height: 30px;
+  border-radius: 5px;
+  color: #fff;
+  background-color: $elements-color;
+  text-align: end;
+  outline: none;
+  border: none;
+  &:hover{
+    cursor:pointer;
+    background-color: #f46464;
+  };
 }
-footer {
-  font-size: 0.75em;
+.choose-file__button-container {
+  overflow: hidden;
+  position: relative;
+  width:200px;
+}
+
+.choose-file__button-container [type=file] {
+  cursor: inherit;
+  display: block;
+  font-size: 999px;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.nav-container{
+  display: flex;
+  flex-direction:column;
+  justify-content: flex-end;
+  align-items:flex-end;
+}
+
+.search__input{
+  width: 70%;
+}
+
+input[type="text"] {
+    box-sizing: border-box;
+    height: 40px;
+    display: block;
+    padding: 10px;
+    border-radius: 2px;
+}
+
+.list-item_wrapper{
+  border-top: 2px solid $body-bg-color;
+  margin: 10px 0;
+}
+
+.inline-item{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px $item-padding;
+}
+
+.film-title{
+  width: 50%;
+  display: flex;
+  align-items: center;
+}
+.sort-button_wrapper{
+  padding: 0 $item-padding;
+}
+
+.remove__button{
+  width: 15%;
+}
+
+.info__button{
+  width: 10%;
+}
+
+.input__div {
+  height: 30px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+}
+
+.bunner{
+  width: 30%;
+  color: $elements-color;
+  font-size: 35px;
   text-align: center;
-  padding-top: 10em;
+  background-color: $main-bg-color ;
+}
+.info_wrapper{
+  padding: 10px $item-padding;
+}
 
-  a {
-    text-decoration: none;
-    color: inherit;
+.form__input{
+  margin: 0 10px;
+}
 
-    &:hover {
-      color: $accent-blue;
-    }
-  }
+.form_wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  #heart{
-    color: $accent-red;
-  }
+.bold{
+  font-weight: bold;
 }

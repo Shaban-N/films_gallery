@@ -3,5 +3,5 @@
   export const SHOW_FILM_INFO = "SHOW_FILM_INFO";
   export const DELETE_FILM = "DELETE_FILM";
   export const SEARCH_FILM = "SEARCH_FILM";
-  export const SORT_FILMS = "SORT_FILMS";
   export const CHANGE_SORTING_ORDER = "CHANGE_SORTING_ORDER";
+  export const ADD_FILMS = 'ADD_FILMS';
