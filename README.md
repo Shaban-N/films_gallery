@@ -31,9 +31,11 @@ Project Structure
 Usage
 
 
+
 To begin, clone this repo.
 
 $ git clone https://github.com/Shaban-N/films_gallery.git
+
 
 
 Install required dependencies. 
@@ -41,9 +43,11 @@ Install required dependencies.
 npm install
 
 
+
 Run srever.
 
 npm start
+
 
 
 You're now ready to get working.
