@@ -2,6 +2,7 @@
 Project Structure
 
 .
+
 ├── src                      # Application source code
 
 │   ├── actions              # Actions
