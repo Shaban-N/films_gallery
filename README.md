@@ -1,6 +1,6 @@
 # films_gallery
 Project Structure
-
+.
 ├── src                      # Application source code
 │   ├── actions              # Actions
 │   ├── components           # Global Reusable Components
