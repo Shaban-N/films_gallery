@@ -6,7 +6,7 @@ const mapDispatchToProps = dispatch => ({
   addFilms: films => dispatch(addFilms(films))
 });
 
-class AddFilm extends Component {
+export class AddFilm extends Component {
   state = {
     title: '',
     format: '',

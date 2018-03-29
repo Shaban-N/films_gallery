@@ -33,7 +33,7 @@ const mapDispatchToProps = dispatch => ({
   addFilms: films => dispatch(addFilms(films))
 });
 
-class FilmsList extends Component {
+export class FilmsList extends Component {
   state = {
     isAddFilmModalOpened: false,
   };

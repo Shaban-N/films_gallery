@@ -7,7 +7,7 @@ const mapDispatchToProps = (dispatch) => ({
   deleteData: (id) => dispatch(deleteFilm(id))
 });
 
-class Film extends Component {
+export class Film extends Component {
   state = {
     isInfoOpened:false,
   };

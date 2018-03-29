@@ -45,7 +45,7 @@ app.listen(port, 'localhost', (err) => {
     });
 
     app.delete('/api/films/:id', (req, res) => {
-      const id = new objectId(req.params.id);
+      const id = req.params.id;
       db.collection("movies").findOneAndDelete({ _id: id }, function (err, result) {
         if (err) return console.log(err)
         else  res.sendStatus(200);
@@ -53,7 +53,7 @@ app.listen(port, 'localhost', (err) => {
     });
 
     app.get('/api/films/:id', (req, res) => {
-      const id = new objectId(req.params.id);
+      const id = req.params.id;
       db.collection("movies").findOne({ _id: id }, function (err, result) {
         if (err) return console.log(err)
         else {
